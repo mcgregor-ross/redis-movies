@@ -1,6 +1,8 @@
 # Redis Movies 
 
-    This project contains multiple resources to explore and use Redis Search + Redis JSON
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/redis-projects/redis-movies)
+
+This project contains multiple resources to explore and use Redis Search + Redis JSON
 
 High level arch: 
 !["Redis Movies Overview"](./resources/images/architecture.png)
