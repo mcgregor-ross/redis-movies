@@ -3,7 +3,6 @@ package io.redis.configuration;
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import io.redis.service.MovieScraperService;
-import io.swagger.models.auth.In;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -16,9 +15,7 @@ import org.springframework.stereotype.Component;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
 
@@ -120,7 +117,7 @@ public class DataParser implements ApplicationListener<ContextRefreshedEvent> {
             movies.append("\n");
         }
 
-        this.writeToFileString(movies.toString(), "movie-titles.json");
+        this.writeToFileString(movies.toString(), "movies/movie-titles.json");
         log.info("Movies New: {}", moviesNew.size());
     }
 
@@ -166,7 +163,7 @@ public class DataParser implements ApplicationListener<ContextRefreshedEvent> {
             restructuredJSON.add(movie);
         }
 
-        this.writeToFileString(gson.toJson(genres), "genres.json");
+        this.writeToFileString(gson.toJson(genres), "movies/genres.json");
         this.writeToFile(restructuredJSON, "parsed-movies.json");
     }
 

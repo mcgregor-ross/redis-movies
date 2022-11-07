@@ -281,3 +281,9 @@ public Page<Movie> advancedSearch(@RequestBody MovieQueryFilter movieQueryFilter
                 "$.revenue" "AS" "revenue" "NUMERIC" 
                 "$.metascore" "AS" "metascore" "NUMERIC"`
     ```
+
+### Testing the Docker Container 
+
+1. Build : `docker build -t movie-service:latest .` 
+2. Start Redis stack or have redis running locally : `docker start redis-stack`
+3. Start the Service: `docker run -p 8080:8080 movie-service:latest`

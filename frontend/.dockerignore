@@ -1,0 +1,7 @@
+node_modules
+.dockerignore
+Dockerfile
+Dockerfile.prod
+React.code-workspace
+.DS_Store
+yarn-error.log

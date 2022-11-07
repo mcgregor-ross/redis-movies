@@ -1,0 +1,104 @@
+@use "../../scss/" as *;
+@use "../../scss/variables" as *;
+@use "../../scss/breakpoint" as *;
+
+.movie-list {
+    .swiper-slide {
+        width: 15%;
+
+        @include tablet {
+            width: 30%;
+        }
+
+        @include mobile {
+            width: 40%;
+        }
+    }
+}
+
+.react-datepicker-wrapper {
+    padding-right: 20px !important;
+
+    .react-datepicker__input-container,
+    .react-datepicker__input-container input {
+        width: 100% !important;
+        background-color: $white !important;
+        border-radius: $border-radius;
+        color: red !important;
+        z-index: 2 !important;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-align: center;
+        padding: 0.3rem
+    }
+}
+
+.react-datepicker-popper {
+    z-index: 2 !important;
+}
+
+.datepicker-label {
+    vertical-align: middle !important;
+}
+
+.mb-2 {
+    margin-bottom: 1rem;
+}
+
+.filter-content {
+    min-width: 30%;
+    margin-right: auto;
+}
+
+.filter-content-year {
+    display: flex;
+}
+
+.filter-button {
+    margin-left: auto;
+    margin-right: 0;
+    
+    // max-width: 50%;
+
+    & > * ~ * {
+        margin-left: 0.5rem;
+    }
+
+    &__item {
+        padding: 0.5rem 1.5rem;
+        border: 2px solid $white;
+        border-radius: $border-radius;
+        font-size: 0.8rem;
+        font-weight: 600;
+        background-color: $body-bg;
+    }
+
+    .filter-button-select {
+        min-width: 25rem !important;
+    }
+}
+
+.movie-search {
+    position: relative;
+    margin: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+
+    input {
+        width: 100%;
+        padding-right: 8rem;
+        background-color: $white;
+    }
+
+    button {
+        position: absolute;
+        right: 0;
+        top: 0px;
+
+        @include mobile {
+            top: -2px;
+        }
+    }
+}

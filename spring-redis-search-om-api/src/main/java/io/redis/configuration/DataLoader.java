@@ -20,24 +20,24 @@ import java.util.List;
 
 @Slf4j
 @Component
-//@DependsOn("redisConfiguration")
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     MovieRepository movieRepository;
 
-    @Value("${spring.redis.movie.data.insert-on-startup:false}")
+    @Value("${spring.redis.movie.data.insert-on-startup}")
     private boolean load;
 
-    @Value("${spring.redis.movie.data.delete-on-shutdown:false}")
+    @Value("${spring.redis.movie.data.dir}")
+    private String FILE_DIR;
+
+    @Value("${spring.redis.movie.data.file}")
+    private String SAMPLE_FILE;
+
+    @Value("${spring.redis.movie.data.delete-on-shutdown}")
     private boolean deleteOnShutdown;
 
     private static FileWriter file;
-
-    // JSON Directory
-    private static final String FILE_DIR = "src/main/resources/";
-    //private static final String SAMPLE_FILE = "legacy/movies.json";
-    private static final String SAMPLE_FILE = "parsed-movies-temp.json";
 
     /**
      * Seed Database with JSON file in resources folder.
@@ -49,6 +49,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if (load) {
 
+            log.info("Loading sample data movies file from dir : '{}' with the provided path : {}", FILE_DIR, FILE_DIR + SAMPLE_FILE);
             BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_DIR + SAMPLE_FILE));
 
             // Serialise to Movie Array from disk

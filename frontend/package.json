@@ -1,0 +1,44 @@
+{
+  "name": "tmovies",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.22.0",
+    "bootstrap": "^5.2.0",
+    "dotenv": "^16.0.1",
+    "moment": "^2.29.4",
+    "query-string": "^7.0.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.4.0",
+    "react-bootstrap-range-slider": "^3.0.8",
+    "react-datepicker": "^4.8.0",
+    "react-dom": "^18.2.0",
+    "react-json-view": "^1.21.3",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.4.0",
+    "sass": "^1.42.1",
+    "swiper": "^8.2.6",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
+}

@@ -48,30 +48,12 @@ public class RedisConfiguration {
     @Bean
     public WebClient localApiClient() throws SSLException {
         final int size = 100 * 1024 * 1024;
-
-
         final ExchangeStrategies strategies = ExchangeStrategies.builder()
                 .codecs(codecs -> codecs.defaultCodecs().maxInMemorySize(size))
                 .build();
-        //.create("https://api.themoviedb.org/3/");
         return WebClient.builder()
                 .exchangeStrategies(strategies)
-//                .filters(exchangeFilterFunctions -> {
-//                    exchangeFilterFunctions.add(logRequest());
-//                })
                 .baseUrl("https://api.themoviedb.org/3/").build();
     }
-
-//    @Bean
-//    JedisConnectionFactory jedisConnectionFactory() {
-//        return new JedisConnectionFactory();
-//    }
-//
-//    @Bean
-//    public RedisTemplate<String, Object> redisTemplate() {
-//        RedisTemplate<String, Object> template = new RedisTemplate<>();
-//        template.setConnectionFactory(jedisConnectionFactory());
-//        return template;
-//    }
 
 }
