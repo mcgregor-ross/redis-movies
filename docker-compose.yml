@@ -43,8 +43,8 @@ services:
       - "3000:3000"
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - MOVIE_SERVICE_HOST=redis
-      - MOVIE_SERVICE_PORT=8080
+      - REACT_APP_MOVIE_SERVICE_HOST=redis
+      - REACT_APP_MOVIE_SERVICE_PORT=8080
 
 networks:
   default:
