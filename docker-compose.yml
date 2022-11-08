@@ -43,7 +43,7 @@ services:
       - "3000:3000"
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - REACT_APP_MOVIE_SERVICE_HOST=redis
+      - REACT_APP_MOVIE_SERVICE_HOST=localhost
       - REACT_APP_MOVIE_SERVICE_PORT=8080
       - DANGEROUSLY_DISABLE_HOST_CHECK=true
       - REACT_APP_API_KEY=8be8e5bc13a1edef7fd11cedcdce8a27
