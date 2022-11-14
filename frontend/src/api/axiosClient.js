@@ -16,14 +16,14 @@ const axiosClient = axios.create({
 const javaAxiosClient = axios.create({
     baseURL: apiConfig.javaServiceUrl,
     timeout: 1000,
+    withCredentials: false,
     headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
     },
     paramsSerializer: (params) => queryString.stringify({ ...params }),
 });
 
 axiosClient.interceptors.request.use(async (config) => {
-    console.log('Starting Request', JSON.stringify(config, null, 2))
     return config;
 });
 
