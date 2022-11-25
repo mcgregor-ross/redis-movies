@@ -49,7 +49,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - REACT_APP_MOVIE_SERVICE_HOST=localhost
       - REACT_APP_MOVIE_SERVICE_PORT=8080
-      - REACT_APP_API_KEY=8be8e5bc13a1edef7fd11cedcdce8a27
+      - REACT_APP_API_KEY=38454bc256d5f464f1e86bac88b726a0
 networks:
   default:
     name: redis-movie-network
