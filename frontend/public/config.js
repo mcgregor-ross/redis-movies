@@ -1,0 +1,1 @@
+window.API_KEY = "38454bc256d5f464f1e86bac88b726a0"
