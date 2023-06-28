@@ -8,8 +8,8 @@ RUN mvn -f ./pom.xml clean package
 
 
 ## Stage 2 - Package
-FROM openjdk:18-jdk-alpine AS runtime
+FROM --platform=linux/amd64 openjdk:18-jdk-alpine AS runtime
 COPY --from=build /build/spring-redis-search-om-api/target/*.jar app.jar
 COPY --from=build /build/spring-redis-search-om-api/src/main/resources/movies.json movies.json
-EXPOSE 8080
+EXPOSE 8081
 ENTRYPOINT ["java","-jar","/app.jar"]

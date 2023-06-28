@@ -1,0 +1,40 @@
+---
+#Frontend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-movies-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-movies-frontend
+  template:
+    metadata:
+      labels:
+        app: redis-movies-frontend
+    spec:
+      containers:
+      - name: redis-movies-frontend
+        image: paulmross/movies-frontend:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: REACT_APP_MOVIE_SERVICE_HOST
+          value: $(REDIS_MOVIES_BACKEND_SERVICE_HOST)
+        - name: REACT_APP_MOVIE_SERVICE_PORT
+          value: $(REDIS_MOVIES_BACKEND_SERVICE_PORT)
+        - name: REACT_APP_API_KEY
+          value: "38454bc256d5f464f1e86bac88b726a0"
+        - name: CHOKIDAR_USEPOLLING
+          value: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-movies-frontend
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: redis-movies-frontend

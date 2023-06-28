@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: redis-movies-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: redis-movies-frontend
+            port:
+              number: 8080
+      - path: /movie
+        pathType: Prefix
+        backend:
+          service:
+            name: redis-movies-backend
+            port:
+              number: 8081

@@ -1,0 +1,37 @@
+#Redis
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-stack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-stack
+  template:
+    metadata:
+      labels:
+        app: redis-stack
+    spec:
+      containers:
+      - name: redis-stack
+        image: redis/redis-stack:latest
+        env:
+        # - name: ALLOW_EMPTY_PASSWORD
+        #   value: "yes"
+        - name: REDIS_ARGS
+          value: "--requirepass example"
+        ports:
+        - containerPort: 6379
+          name: redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-stack
+spec:
+  ports:
+  - port: 6379
+  selector:
+    app: redis-stack
+

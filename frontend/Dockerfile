@@ -1,5 +1,5 @@
 # Stage 1 - Build
-FROM node:17-alpine AS builder
+FROM --platform=linux/amd64 node:17-alpine AS builder
 WORKDIR /app
 COPY package.json .
 COPY yarn.lock .
@@ -10,9 +10,7 @@ EXPOSE 3000
 CMD ["npm", "start"]
 
 ## Stage 2 - Nginx
-FROM nginx:alpine
-COPY --from=builder /app/build /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
-COPY ./nginx.conf /etc/nginx/nginx.conf
-EXPOSE 80
+FROM --platform=linux/amd64 registry.access.redhat.com/ubi9/nginx-122
+COPY --from=builder /app/build .
+EXPOSE 8080
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

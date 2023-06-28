@@ -1,0 +1,44 @@
+---
+#Backend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-movies-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-movies-backend
+  template:
+    metadata:
+      labels:
+        app: redis-movies-backend
+    spec:
+      containers:
+      - name: backend
+        image: paulmross/movies-api:latest
+        ports:
+        - containerPort: 8081
+        env:
+        - name: REDIS_HOST
+          value: $(REDIS_STACK_SERVICE_HOST)
+        - name: REDIS_PORT
+          value: $(REDIS_STACK_SERVICE_PORT)
+        - name: REDIS_PASSWORD
+          value: "example"
+        - name: REDIS_SSL
+          value: "false"
+        - name: MOVIE_INSERT_ON_STARTUP
+          value: "true"
+        - name: MOVIE_DATA_DIR
+          value: "./"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-movies-backend
+spec:
+  ports:
+  - port: 8081
+  selector:
+    app: redis-movies-backend
